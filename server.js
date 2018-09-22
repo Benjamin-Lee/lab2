@@ -11,6 +11,8 @@ app.set('views', path.join(__dirname, 'views'));
 
 const API_KEY = '7ad657f0-b77e-11e8-bf0e-e9322ccde4db';
 
+let comments = {};
+
 // behavior for the index route
 app.get('/', (req, res) => {
   const url = `https://api.harvardartmuseums.org/gallery?size=100&apikey=${API_KEY}`;
@@ -33,12 +35,17 @@ app.get('/object/:object_id', function(req, res) {
   fetch(`https://api.harvardartmuseums.org/object/${req.params.object_id}?apikey=${API_KEY}`)
   .then(response => response.json())
   .then(data => {
-      res.render('details', {detail: data});
+      res.render('details', {detail: data, object_id: req.params.object_id});
   });
 });
 
-app.post("/submit_comment", function(req, res) {
-    console.log(req.body);
+app.get("/submit_comment/:object_id/:comment", function(req, res) {
+    if (comments[req.params.object_id]) {
+        comments[req.params.object_id].push(req.params.comment);
+    } else {
+        comments[req.params.object_id] = [req.params.comment]
+    }
+    console.log(comments);
 });
 
 app.listen(port, host, () => {

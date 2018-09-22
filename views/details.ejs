@@ -25,15 +25,15 @@
       <label for="comment">Add comment:</label>
       <textarea class="form-control" rows="5" id="comment"></textarea>
     </div>
-<button onclick="submit_comment()" class="btn btn-primary">Submit</button>
+<button onclick="submit_comment()" type="button" class="btn btn-primary">Submit</button>  <!-- from https://stackoverflow.com/questions/7803814/prevent-refresh-of-page-when-button-inside-form-clicked -->
 </form>
 <ul>
 </ul>
 
 <script type="text/javascript">
     function submit_comment() {
-        fetch("/submit_comment", {method: "POST", body: document.getElementById("comment").value})
-    }
+        fetch(`/submit_comment/<%- object_id %>/${encodeURIComponent(document.getElementById("comment").value)}`); // from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent
+    };
 </script>
 
 <%- include('footer') %>
