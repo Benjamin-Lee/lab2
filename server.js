@@ -9,7 +9,7 @@ const port = 3000;
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-const API_KEY = 'TODO';
+const API_KEY = 'dummy';
 
 // behavior for the index route
 app.get('/', (req, res) => {
