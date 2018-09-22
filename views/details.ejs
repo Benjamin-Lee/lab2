@@ -15,7 +15,7 @@
     <td><%- detail.description %></td>
     <td><%- detail.provenance %></td>
     <td><%- detail.accessionyear %></td>
-    <td><img style="vertical-align: bottom;" src="<%- detail.primaryimageurl %>"></td>
+    <td><img style="max-height:300px;height: expression(this.height > 500 ? 500: true);" width="100%" src="<%- detail.primaryimageurl %>"></td>
   </tr>
 </table>
 
