@@ -20,8 +20,20 @@
 </table>
 
 <h2>Comments</h2>
-<input type="text">
+<form>
+    <div class="form-group">
+      <label for="comment">Add comment:</label>
+      <textarea class="form-control" rows="5" id="comment"></textarea>
+    </div>
+<button onclick="submit_comment()" class="btn btn-primary">Submit</button>
+</form>
 <ul>
 </ul>
+
+<script type="text/javascript">
+    function submit_comment() {
+        fetch("/submit_comment", {method: "POST", body: document.getElementById("comment").value})
+    }
+</script>
 
 <%- include('footer') %>

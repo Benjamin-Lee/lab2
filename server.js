@@ -37,6 +37,10 @@ app.get('/object/:object_id', function(req, res) {
   });
 });
 
+app.post("/submit_comment", function(req, res) {
+    console.log(req.body);
+});
+
 app.listen(port, host, () => {
   console.log(`Server running on http://${host}:${port}/`);
 });
