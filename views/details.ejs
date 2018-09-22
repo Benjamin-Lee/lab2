@@ -1,0 +1,23 @@
+<%- include('header') %>
+
+<h1>Object Details</h1>
+
+<table style="width:100%">
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Provenance</th>
+    <th>Accession Year</th>
+    <th>Image</th>
+  </tr>
+  <tr id="actual-details">
+    <td><%- detail.title %></td>
+    <td><%- detail.description %></td>
+    <td><%- detail.provenance %></td>
+    <td><%- detail.accessionyear %></td>
+    <td><img style="vertical-align: bottom;" src="<%- detail.primaryimageurl %>"></td>
+  </tr>
+</table>
+
+
+<%- include('footer') %>

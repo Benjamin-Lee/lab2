@@ -30,7 +30,11 @@ app.get('/gallery/:gallery_id', function(req, res) {
 });
 
 app.get('/object/:object_id', function(req, res) {
-  res.send(`You are on object ${req.params.object_id}`);
+  fetch(`https://api.harvardartmuseums.org/object/${req.params.object_id}?apikey=${API_KEY}`)
+  .then(response => response.json())
+  .then(data => {
+      res.render('details', {detail: data});
+  });
 });
 
 app.listen(port, host, () => {
