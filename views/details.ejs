@@ -2,6 +2,7 @@
 
 <h1>Object Details</h1>
 
+<!-- table of info about object -->
 <table style="width:100%">
   <tr>
     <th>Title</th>
@@ -33,6 +34,7 @@
 
 
 <form>
+    <!-- comment submission box -->
     <div class="form-group">
       <label for="comment">Add comment:</label>
       <textarea class="form-control" rows="5" id="comment"></textarea>
@@ -46,7 +48,7 @@
     function submit_comment() {
         // takes the value of the comment in the textbox, submits it, and adds it to the comments list
         fetch(`/submit_comment/<%- object_id %>/${encodeURIComponent(document.getElementById("comment").value)}`); // from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent
-        document.getElementById("comments_list").innerHTML += `<li>${document.getElementById("comment").value}</li>`;
+        .then(document.getElementById("comments_list").innerHTML += `<li>${document.getElementById("comment").value}</li>`);
     };
 </script>
 
