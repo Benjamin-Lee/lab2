@@ -23,7 +23,7 @@
 
 <h2>Comments</h2>
 
-<ul style="list-style-type:none">
+<ul id="comments_list">
   <% comments.forEach(comment => { %>
   <li>
     <%- comment %>
@@ -45,6 +45,7 @@
 <script type="text/javascript">
     function submit_comment() {
         fetch(`/submit_comment/<%- object_id %>/${encodeURIComponent(document.getElementById("comment").value)}`); // from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent
+        document.getElementById("comments_list").innerHTML += `<li>${document.getElementById("comment").value}</li>`;
     };
 </script>
 
