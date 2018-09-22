@@ -35,7 +35,8 @@ app.get('/object/:object_id', function(req, res) {
   fetch(`https://api.harvardartmuseums.org/object/${req.params.object_id}?apikey=${API_KEY}`)
   .then(response => response.json())
   .then(data => {
-      res.render('details', {detail: data, object_id: req.params.object_id});
+      let object_comments = comments[req.params.object_id] ? comments[req.params.object_id] : []
+      res.render('details', {detail: data, object_id: req.params.object_id, comments : object_comments});
   });
 });
 

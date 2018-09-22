@@ -19,7 +19,19 @@
   </tr>
 </table>
 
+
+
 <h2>Comments</h2>
+
+<ul style="list-style-type:none">
+  <% comments.forEach(comment => { %>
+  <li>
+    <%- comment %>
+  </li>
+  <% }); %>
+</ul>
+
+
 <form>
     <div class="form-group">
       <label for="comment">Add comment:</label>
