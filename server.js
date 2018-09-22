@@ -22,7 +22,15 @@ app.get('/', (req, res) => {
 });
 
 app.get('/gallery/:gallery_id', function(req, res) {
-  res.send(`You are on gallery ${req.params.gallery_id}`);
+    fetch(`https://api.harvardartmuseums.org/object?apikey=${API_KEY}&gallery=${req.params.gallery_id}&size=999`)
+    .then(response => response.json())
+    .then(data => {
+        res.render('gallery', {objects: data.records, gallery_id: req.params.gallery_id});
+    })
+});
+
+app.get('/object/:object_id', function(req, res) {
+  res.send(`You are on object ${req.params.object_id}`);
 });
 
 app.listen(port, host, () => {
