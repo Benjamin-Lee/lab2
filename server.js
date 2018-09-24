@@ -47,7 +47,8 @@ app.get("/submit_comment/:object_id/:comment", function(req, res) {
     if (comments[req.params.object_id]) {
         comments[req.params.object_id].push(req.params.comment);
     } else {
-        comments[req.params.object_id] = [req.params.comment]
+        comments[req.params.object_id] = []
+        comments[req.params.object_id].push(req.params.comment);
     }
 });
 
